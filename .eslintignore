@@ -45,6 +45,7 @@ yarn-error.log*
 # Config files
 jest.config.js
 *.config.js
+package-lock.json
 
 # OS generated files
 .DS_Store
