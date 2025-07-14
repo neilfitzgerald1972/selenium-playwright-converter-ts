@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // Global teardown for Jest tests
-export default async function globalTeardown() {
+export default async function globalTeardown(): Promise<void> {
   // Give a moment for any remaining async operations to complete
   await new Promise(resolve => setTimeout(resolve, 100));
 

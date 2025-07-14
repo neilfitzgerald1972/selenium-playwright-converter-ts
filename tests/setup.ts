@@ -13,7 +13,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R> {
-      toBeOneOf(expected: readonly any[]): R;
+      toBeOneOf(expected: readonly unknown[]): R;
       toContainPath(expected: string): R;
       toHaveValidTypeScript(): R;
     }
@@ -22,23 +22,24 @@ declare global {
 
 // Add custom matchers
 expect.extend({
-  toBeOneOf(received: any, expected: readonly any[]) {
-    const pass = expected.includes(received);
+  toBeOneOf(received: unknown, expected: readonly unknown[]) {
+    const pass = (expected as unknown[]).includes(received);
     return {
       pass,
-      message: () => `Expected ${received} to be one of: ${expected.join(', ')}`,
+      message: (): string =>
+        `Expected ${received} to be one of: ${(expected as string[]).join(', ')}`,
     };
   },
 
   toContainPath(received: string, expected: string) {
-    const normalize = (path: string) => path.replace(/\\/g, '/').toLowerCase();
+    const normalize = (path: string): string => path.replace(/\\/g, '/').toLowerCase();
     const receivedNormalized = normalize(received);
     const expectedNormalized = normalize(expected);
     const pass = receivedNormalized.includes(expectedNormalized);
 
     return {
       pass,
-      message: () => `Expected path "${received}" to contain "${expected}"`,
+      message: (): string => `Expected path "${received}" to contain "${expected}"`,
     };
   },
 
@@ -48,7 +49,7 @@ expect.extend({
     const pass = typeof received === 'string' && received.length > 0;
     return {
       pass,
-      message: () => 'Expected valid TypeScript code',
+      message: (): string => 'Expected valid TypeScript code',
     };
   },
 });
@@ -71,7 +72,7 @@ const cleanupProcesses = (): void => {
 };
 
 // Global error handlers for better test reliability
-const handleUnhandledRejection = (reason: any, promise: Promise<any>): void => {
+const handleUnhandledRejection = (reason: unknown, promise: Promise<unknown>): void => {
   console.error('Unhandled Rejection at:', promise);
   console.error('Reason:', reason);
 
@@ -105,29 +106,20 @@ signals.forEach(signal => {
   });
 });
 
-// Enhanced global utilities for tests
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toBeOneOf(expected: readonly any[]): R;
-      toContainPath(expected: string): R;
-      toHaveValidTypeScript(): R;
-    }
-  }
-}
-
-// Custom Jest matchers for better assertions
+// Custom Jest matchers for better assertions (removing duplicate)
 expect.extend({
-  toBeOneOf(received: any, expected: readonly any[]) {
-    const pass = expected.includes(received);
+  toBeOneOf(received: unknown, expected: readonly unknown[]) {
+    const pass = (expected as unknown[]).includes(received);
     if (pass) {
       return {
-        message: () => `expected ${received} not to be one of ${expected.join(', ')}`,
+        message: (): string =>
+          `expected ${received} not to be one of ${(expected as string[]).join(', ')}`,
         pass: true,
       };
     } else {
       return {
-        message: () => `expected ${received} to be one of ${expected.join(', ')}`,
+        message: (): string =>
+          `expected ${received} to be one of ${(expected as string[]).join(', ')}`,
         pass: false,
       };
     }
@@ -140,12 +132,12 @@ expect.extend({
 
     if (pass) {
       return {
-        message: () => `expected "${received}" not to contain path "${expected}"`,
+        message: (): string => `expected "${received}" not to contain path "${expected}"`,
         pass: true,
       };
     } else {
       return {
-        message: () => `expected "${received}" to contain path "${expected}"`,
+        message: (): string => `expected "${received}" to contain path "${expected}"`,
         pass: false,
       };
     }
@@ -161,12 +153,12 @@ expect.extend({
 
     if (pass) {
       return {
-        message: () => 'expected code not to have valid TypeScript syntax',
+        message: (): string => 'expected code not to have valid TypeScript syntax',
         pass: true,
       };
     } else {
       return {
-        message: () => 'expected code to have valid TypeScript syntax',
+        message: (): string => 'expected code to have valid TypeScript syntax',
         pass: false,
       };
     }
@@ -213,29 +205,29 @@ const testUtils: TestUtils = {
         import { WebDriver, Builder, By, until, Key, Actions, Select } from "selenium-webdriver";
         const driver = new Builder().forBrowser("chrome").build();
         await driver.get("https://example.com");
-        
+
         // Form interactions
         const form = driver.findElement(By.id("form"));
         const input = form.findElement(By.name("data"));
         await input.sendKeys("test");
-        
+
         // Dropdown
         const dropdown = driver.findElement(By.id("dropdown"));
         const select = new Select(dropdown);
         await select.selectByVisibleText("Option");
-        
+
         // Actions
         const button = driver.findElement(By.css(".button"));
         const actions = new Actions(driver);
         await actions.moveToElement(button).click().perform();
-        
+
         // Window handling
         const handles = await driver.getAllWindowHandles();
         await driver.switchTo().window(handles[1]);
-        
+
         // JavaScript
         await driver.executeScript("console.log('test')");
-        
+
         await driver.quit();
       `,
     };
@@ -260,7 +252,7 @@ const testUtils: TestUtils = {
 };
 
 // Make test utilities globally available
-(global as any).testUtils = testUtils;
+(global as Record<string, unknown>).testUtils = testUtils;
 
 // Memory management for long-running test suites
 const setupMemoryManagement = (): void => {
@@ -315,7 +307,7 @@ configureTestEnvironment();
 
 // Polyfill for older Node.js versions
 if (typeof globalThis === 'undefined') {
-  (global as any).globalThis = global;
+  (global as Record<string, unknown>).globalThis = global;
 }
 
 // Log setup completion (only in verbose mode)

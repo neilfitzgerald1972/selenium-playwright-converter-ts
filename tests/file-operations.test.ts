@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
 import { createConverter, resetMocks, mockFs } from './utils/test-utils';
-import * as path from 'path';
 
 describe('File Operations', () => {
   const testDir = '/test-dir';
-  const outputDir = '/output-dir';
   let converter: ReturnType<typeof createConverter>;
 
   beforeEach(() => {

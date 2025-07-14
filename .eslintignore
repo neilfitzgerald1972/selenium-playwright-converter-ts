@@ -21,11 +21,8 @@ coverage/
 *.sln
 
 # Ignore test files with console statements
-tests/setup.ts
-tests/teardown.ts
-tests/utils/test-utils.ts
-tests/file-operations.test.ts
-tests/waits-conditions.test.ts
+
+
 *.sw?
 
 # Logs
