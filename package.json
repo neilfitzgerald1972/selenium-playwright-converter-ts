@@ -17,7 +17,7 @@
     "clean": "rimraf dist coverage",
     "dev": "NODE_OPTIONS='--loader ts-node/esm' node --loader ts-node/esm src/cli.ts",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "lint": "echo 'Linting TypeScript files...' && echo \"Found $(find . -name '*.ts' -not -path './node_modules/*' -not -path './dist/*' -not -path './coverage/*' | wc -l | tr -d ' ') TypeScript files\" && find . -name '*.ts' -not -path './node_modules/*' -not -path './dist/*' -not -path './coverage/*' | head -15 && echo '...' && eslint . --ext .ts",
+    "lint": "echo 'Linting TypeScript files...' && echo \"Found $(find . -name '*.ts' -not -path './node_modules/*' -not -path './dist/*' -not -path './coverage/*' | wc -l | tr -d ' ') TypeScript files\" && find . -name '*.ts' -not -path './node_modules/*' -not -path './dist/*' -not -path './coverage/*' | head -100 && eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "lint:staged": "lint-staged",
     "prepare": "husky install",
