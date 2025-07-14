@@ -8,11 +8,12 @@ dist/
 build/
 coverage/
 
-# Test files
+# Test files (keep .ts files for build, exclude .js output)
 *.test.js
-*.test.ts
 *.spec.js
-*.spec.ts
+
+# Ensure tests directory is included for build
+!tests/
 
 # Environment files
 .env
@@ -74,7 +75,6 @@ bower_components/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
