@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/all-contributors/all-contributors-cli/master/schema.json",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "neilfitzgerald1972",
+      "name": "Neil Fitzgerald",
+      "avatar_url": "https://avatars.githubusercontent.com/u/neilfitzgerald1972?v=4",
+      "profile": "https://github.com/neilfitzgerald1972",
+      "contributions": [
+        "code",
+        "doc",
+        "test",
+        "infra",
+        "maintenance"
+      ]
+    }
+  ],
+  "projectName": "selenium-playwright-converter-ts",
+  "projectOwner": "neilfitzgerald1972",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

@@ -1,0 +1,160 @@
+{
+  "esModuleSupport": true,
+  "testFramework": "jest",
+  "moduleType": "esm",
+  "fileNamingConvention": "kebab-case",
+  "testFileSuffix": ".test.ts",
+  "codeStyle": {
+    "indentSize": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
+  },
+  "importRules": {
+    "preferDefaultExports": false,
+    "preferNamedExports": true,
+    "internalModuleDirectories": ["src", "tests"]
+  },
+  "testRules": {
+    "testMatch": ["**/__tests__/**/*.test.ts", "**/?(*.)+(spec|test).ts"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "linting": {
+    "extensions": [".ts"],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "warn",
+      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "prefer-const": "error"
+    }
+  },
+  "fileStructure": {
+    "src": {
+      "description": "Source files",
+      "children": {
+        "index.ts": "Main entry point",
+        "utils/": "Utility functions",
+        "types/": "TypeScript type definitions"
+      }
+    },
+    "tests": {
+      "description": "Test files",
+      "children": {
+        "__mocks__/": "Jest mocks",
+        "fixtures/": "Test fixtures",
+        "setup.ts": "Test setup file"
+      }
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "pre-push": "npm test"
+  },
+  "playwrightConventions": {
+    "keyboardInputPreference": {
+      "description": "Prefer using type() over press() when possible for better test reliability and readability.",
+      "rules": [
+        {
+          "id": "prefer-type-over-press",
+          "description": "Use type() for text input and press() only for special keys and key combinations.",
+          "severity": "warn",
+          "enabled": true,
+          "examples": {
+            "prefer": "await element.type('Hello World')",
+            "avoid": "await element.press('H'); await element.press('e'); // etc."
+          }
+        },
+        {
+          "id": "use-press-for-special-keys",
+          "description": "Use press() for special keys like Enter, Tab, Arrow keys, etc.",
+          "severity": "info",
+          "enabled": true,
+          "examples": {
+            "correct": "await element.press('Enter')",
+            "incorrect": "await element.type('{Enter}')"
+          }
+        }
+      ]
+    },
+    "behaviorPreservation": {
+      "description": "Add comments to document behavior requirements that might need special attention during future modifications.",
+      "rules": [
+        {
+          "id": "document-behavior-requirements",
+          "description": "Add comments when implementing behavior that has specific requirements or edge cases that future maintainers should be aware of.",
+          "severity": "info",
+          "enabled": true,
+          "commentFormat": "// BEHAVIOR: [Brief description of behavior requirement]\n// REASON: [Why this behavior is needed]\n// EXAMPLES: [Example inputs/outputs or edge cases]"
+        }
+      ]
+    }
+  },
+  "qualityAssurance": {
+    "testModificationPolicy": {
+      "description": "Tests should not be modified to match incorrect implementations. Instead, fix the implementation to match the test expectations.",
+      "rules": [
+        {
+          "id": "no-test-modification-for-incorrect-implementation",
+          "description": "Do not modify test expectations to match incorrect implementations. The implementation should be fixed to pass the tests.",
+          "severity": "error",
+          "enabled": true
+        },
+        {
+          "id": "preserve-test-semantics",
+          "description": "When updating tests, ensure the semantic meaning and assertions remain correct according to the specification.",
+          "severity": "error",
+          "enabled": true
+        },
+        {
+          "id": "verify-implementation-correctness",
+          "description": "Before writing or modifying tests, verify that the implementation matches the specification. Do not assume the implementation is correct by default.",
+          "severity": "error",
+          "enabled": true,
+          "steps": [
+            "Review the specification and requirements",
+            "Analyze the current implementation for correctness",
+            "Identify any discrepancies between implementation and specification",
+            "Update implementation if needed before writing or modifying tests"
+          ]
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "tsc",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.0.0"
+  }
+}

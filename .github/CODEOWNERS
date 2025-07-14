@@ -1,0 +1,13 @@
+# Default owners for everything in the repo
+*       @neilfitzgerald1972
+
+# Documentation
+/docs/ @neilfitzgerald1972
+
+# Configuration files
+/.github/ @neilfitzgerald1972
+/.vscode/ @neilfitzgerald1972
+
+# Source code
+/src/ @neilfitzgerald1972
+/tests/ @neilfitzgerald1972

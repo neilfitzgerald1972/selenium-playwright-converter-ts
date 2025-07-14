@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: selenium-playwright-converter
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    # No ports needed for CLI tool
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  # Add additional services here as needed
+  # For example, a database or cache service
+  # redis:
+  #   image: redis:alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+
+# Define volumes for persistent data
+# volumes:
+#   redis_data:

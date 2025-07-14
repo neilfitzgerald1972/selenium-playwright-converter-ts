@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "firsttris.vscode-jest-runner",
+    "rvest.vs-code-prettier-eslint",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

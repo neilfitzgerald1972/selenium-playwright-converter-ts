@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Selenium to Playwright Converter"
+version: 1.0.0
+date-released: 2024-12-14
+url: "https://github.com/neilfitzgerald1972/selenium-playwright-converter-ts"
+repository-code: "https://github.com/neilfitzgerald1972/selenium-playwright-converter-ts"
+
+authors:
+  - family-names: "Fitzgerald"
+    given-names: "Neil"
+    affiliation: "Independent Developer"
+
+license: "MIT"
+
+keywords:
+  - "selenium"
+  - "playwright"
+  - "test-automation"
+  - "migration"
+  - "typescript"
+  - "code-converter"
+  - "webdriver"
+
+# Uncomment and edit the references section if you want to include references
+# references:
+#   - type: book
+#     authors:
+#       - family-names: "Author"
+#         given-names: "A."
+#     title: "Book Title"
+#     publisher: "Publisher"
+#     year: 2023
+#     doi: 10.0000/example-doi

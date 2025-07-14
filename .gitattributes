@@ -1,0 +1,27 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Force these files to be treated as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Force these files to have LF line endings
+*.sh text eol=lf
+
+# Force these files to have CRLF line endings
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Ignore line ending differences for these files
+*.sln text eol=crlf
+*.csproj text eol=crlf
+*.vbproj text eol=crlf
+*.fsproj text eol=crlf
