@@ -12,7 +12,6 @@
     "dist/**/*",
     "README.md"
   ],
-
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist coverage",
@@ -30,11 +29,11 @@
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
     "test:update": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --updateSnapshot",
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --watch",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit -p tsconfig.test.json"
   },
   "keywords": [
     "selenium",
-    "playwright", 
+    "playwright",
     "migration",
     "test-automation",
     "converter",
@@ -73,9 +72,12 @@
     "node": ">=18.0.0"
   },
   "lint-staged": {
-    "*.{js,ts,json,md}": [
+    "*.{js,ts}": [
       "prettier --write",
       "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
     ]
   },
   "repository": {

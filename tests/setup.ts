@@ -106,64 +106,7 @@ signals.forEach(signal => {
   });
 });
 
-// Custom Jest matchers for better assertions (removing duplicate)
-expect.extend({
-  toBeOneOf(received: unknown, expected: readonly unknown[]) {
-    const pass = (expected as unknown[]).includes(received);
-    if (pass) {
-      return {
-        message: (): string =>
-          `expected ${received} not to be one of ${(expected as string[]).join(', ')}`,
-        pass: true,
-      };
-    } else {
-      return {
-        message: (): string =>
-          `expected ${received} to be one of ${(expected as string[]).join(', ')}`,
-        pass: false,
-      };
-    }
-  },
-
-  toContainPath(received: string, expected: string) {
-    const normalizedReceived = received.replace(/\\/g, '/');
-    const normalizedExpected = expected.replace(/\\/g, '/');
-    const pass = normalizedReceived.includes(normalizedExpected);
-
-    if (pass) {
-      return {
-        message: (): string => `expected "${received}" not to contain path "${expected}"`,
-        pass: true,
-      };
-    } else {
-      return {
-        message: (): string => `expected "${received}" to contain path "${expected}"`,
-        pass: false,
-      };
-    }
-  },
-
-  toHaveValidTypeScript(received: string) {
-    // Basic TypeScript syntax validation
-    const hasImports = /import\s+.*\s+from\s+['"].*['"]/.test(received);
-    const hasNoSyntaxErrors = !received.includes('undefined') || received.includes('// TODO');
-    const hasProperAwaits = !received.includes('await page.') || received.includes('async');
-
-    const pass = hasImports && hasNoSyntaxErrors && hasProperAwaits;
-
-    if (pass) {
-      return {
-        message: (): string => 'expected code not to have valid TypeScript syntax',
-        pass: true,
-      };
-    } else {
-      return {
-        message: (): string => 'expected code to have valid TypeScript syntax',
-        pass: false,
-      };
-    }
-  },
-});
+// Note: Custom Jest matchers are defined above - no duplicate needed
 
 // Global test utilities
 interface TestUtils {

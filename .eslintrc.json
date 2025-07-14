@@ -30,6 +30,13 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off"
       }
+    },
+    {
+      "files": ["*.json"],
+      "parser": "espree",
+      "parserOptions": {
+        "project": null
+      }
     }
   ]
 }
