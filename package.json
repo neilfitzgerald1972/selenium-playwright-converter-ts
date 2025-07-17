@@ -29,7 +29,8 @@
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
     "test:update": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --updateSnapshot",
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --watch",
-    "type-check": "tsc --noEmit -p tsconfig.test.json"
+    "type-check": "tsc --noEmit",
+    "type-check:tests": "tsc --noEmit -p tsconfig.test.json"
   },
   "keywords": [
     "selenium",

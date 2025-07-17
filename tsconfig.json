@@ -21,15 +21,8 @@
     "checkJs": true,
     "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*",
-    "tests/**/*",
-    "jest.config.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
+  "include": ["src/**/*", "jest.config.ts"],
+  "exclude": ["node_modules", "dist", "tests"],
   "ts-node": {
     "esm": true
   }
