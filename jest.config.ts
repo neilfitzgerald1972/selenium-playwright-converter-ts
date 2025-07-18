@@ -23,7 +23,7 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
   transformIgnorePatterns: ['node_modules/(?!(chalk|ora|commander)/)'],
   // Global test setup
-  setupFiles: ['<rootDir>/tests/utils/test-setup.ts'],
+  setupFiles: ['<rootDir>/tests/test-utils/test-setup.ts'],
 };
 
 export default config;
