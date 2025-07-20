@@ -27,6 +27,7 @@
     "test": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --passWithNoTests",
     "test:ci": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --ci --coverage",
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --coverage",
+    "test:package": "bash scripts/test-package.sh",
     "test:update": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --updateSnapshot",
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --watch",
     "type-check": "tsc --noEmit",
