@@ -1,5 +1,13 @@
 # Selenium to Playwright Converter
 
+> ⚠️ **Project Status: Not Actively Maintained**
+> 
+> This project has reached the limits of its current approach and is no longer being actively maintained. While it can handle many common conversion patterns, the regex-based transformation system has inherent limitations that prevent more comprehensive and reliable conversions.
+>
+> The author is working on a new project with a fundamentally different approach that will provide more effective and extensive transformations. Stay tuned for updates on this upcoming tool.
+>
+> Feel free to fork this project if you find it useful as a starting point.
+
 A CLI tool that converts Selenium WebDriver TypeScript tests to Playwright format.
 
 > **Note**: This tool was generated using AI assistance to automate common conversion patterns. Manual review of converted code is required.
